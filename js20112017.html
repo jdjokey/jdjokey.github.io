@@ -1,22 +1,20 @@
 <html>
 <script>
-funtion exampleName () {
-var firstName = document.getElementByID("firstName").value;
-var lastName = document.getElementByID("lastName").value;
-var fullname = firstName + lastName;
-consile.log(fullname);//outputting to f12 console
-document.getElementByID("output").innerHTML = fullName; //outputting to html
-
-}
+    function exampleName() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var fullName = firstName + lastName;
+        console.log(fullName); //outputting to f12 console
+        document.getElementById("output").innerHTML = fullName; //outputting to html
+    }
 </script>
 
 <body>
-<input type="text" id="firstName" placeholder="First name" />
-<input type ="text" id"lastName" placeholder="Last Name" />
-<button onclick="example()">Click me!</button
+    <input type="text" id="firstName"  placeholder="First name" />
+    <input type="text" id="lastName" placeholder="Last Name" />
+    <button onclick="exampleName()">Click me!</button>
 
-<p id="output"></p>
+    <p id="output"></p>
 </body>
-
 
 </html>
