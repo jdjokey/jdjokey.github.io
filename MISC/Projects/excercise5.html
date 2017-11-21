@@ -21,9 +21,9 @@
         document.getElementById("output2").innerHTML = result;
     }
     function divideNumbers() {
-        var input1 = document.getElementById("input5").value;
-        var input2 = document.getElementById("input6").value;
-        var result = parseInt(input1) + parseInt(input2);
+        var input5 = document.getElementById("input5").value;
+        var input6 = document.getElementById("input6").value;
+        var result = parseInt(input5) / parseInt(input6);
         document.getElementById("output3").innerHTML = result;
     }
 
@@ -43,7 +43,7 @@
 
     <input type="text" id="input5" />
     <input type="text" id="input6" />
-    <button onclick="divideNumbers()">Add Numbers</button>    
+    <button onclick="divideNumbers()">Divide Numbers</button>    
     
     <p id="output3"></p>
 
