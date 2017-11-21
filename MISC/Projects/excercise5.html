@@ -14,6 +14,18 @@
         var result = parseInt(input1) + parseInt(input2);
         document.getElementById("output").innerHTML = result;
     }
+    function subtractNumbers() {
+        var input3 = document.getElementById("input3").value;
+        var input4 = document.getElementById("input4").value;
+        var result = parseInt(input3) - parseInt(input4);
+        document.getElementById("output").innerHTML = result;
+    }
+    function addNumbers() {
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+        var result = parseInt(input1) + parseInt(input2);
+        document.getElementById("output").innerHTML = result;
+    }
 
 </script>
 
@@ -24,9 +36,9 @@
     <button onclick="addNumbers()">Add Numbers</button>    
     <p id="output"></p>
 
-    <input type="text" id="input1" />
-    <input type="text" id="input2" />
-    <button onclick="addNumbers()">Add Numbers</button>    
+    <input type="text" id="input3" />
+    <input type="text" id="input4" />
+    <button onclick="addNumbers()">Subtract Numbers</button>    
     <p id="output"></p>
 
     <input type="text" id="input1" />
