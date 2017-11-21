@@ -26,6 +26,12 @@
         var result = parseInt(input5) / parseInt(input6);
         document.getElementById("output3").innerHTML = result;
     }
+    function divideNumbers() {
+        var input7 = document.getElementById("input7").value;
+        var input8 = document.getElementById("input8").value;
+        var result = parseInt(input7) * parseInt(input8);
+        document.getElementById("output4").innerHTML = result;
+    }
 
 </script>
 
@@ -43,9 +49,13 @@
 
     <input type="text" id="input5" />
     <input type="text" id="input6" />
-    <button onclick="divideNumbers()">Divide Numbers</button>    
-    
+    <button onclick="divideNumbers()">Divide Numbers</button>
     <p id="output3"></p>
+
+    <input type="text" id="input7" />
+    <input type="text" id="input8" />
+    <button onclick="multiplyNumbers()">Divide Numbers</button>
+    <p id="output4"></p>
 
 
 </body>
