@@ -30,11 +30,9 @@
         }
         
 
-        }
-createCar(5, "Peugeot", "YK10YKM", "Red");
-createCar(10, "Lambo", "PG10PGM", "Black");
+ }
 
-       outputList();
+     
 
 function deleteCar( registrationToDelete){
     for (var i = 0; i < carlist.length; i++) {
@@ -46,11 +44,16 @@ function deleteCar( registrationToDelete){
     }
 }
 
-deleteCar("YK10YKM");
-deleteCar("PG10YKM");
-                  
+function createcarFromForm(){
+    var make = document.getElementById("inputName");
+    var age = document.getElementById("inputAge");
+    var color = document.getElementById("inputColor");
+    var registration = document.getElementById("inputRegistration")
+    createCar(age, make, registration, color);
+    //Temporary!!
+    outputList();
 
-
+}
 
 
     </script>
@@ -66,7 +69,7 @@ deleteCar("PG10YKM");
     <hr/>
     
     <h1>Remove Car</h1>
-    Registration: <inputtype="text" id="deleteInput"/>
+    Registration: <input type="text" id="deleteInput"/>
     <button>Remove</button>
 
 
