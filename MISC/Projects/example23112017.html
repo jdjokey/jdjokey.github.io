@@ -9,11 +9,9 @@
 </head>
 
 <script>
-        
 
-        var carlist = []
-
-        function createCar(age, make, registration, color){
+    var carlist = []
+    function createCar(age, make, registration, color){
             var carObject = { 
                 age: age,
                 make:make,
@@ -21,19 +19,23 @@
                 color: color           
             }
             carlist.push(carObject);
-        }
-
-        function outputList(){
-        //Output
-        for (var i = 0; i < carlist.length; i++) {
-            console.log(carlist[i].registration);
-        }
+    }
         
+function outputList(){
+    var carOutput ="";
+        
+        for (var i = 0; i < carlist.length; i++) {
+            carOutput += "<option>:" 
+            carOutput += carlist[i].registration;
+            carOutput +=  "Color:" +carlist [i].color;
+            carOutput += "</option>";
+
+        }
+     document.getElementById("output").innerHTML = carOutput;   
 
  }
 
      
-
 function deleteCar( registrationToDelete){
     for (var i = 0; i < carlist.length; i++) {
             if (carlist[i].registration == registrationToDelete) {
@@ -45,15 +47,47 @@ function deleteCar( registrationToDelete){
 }
 
 function createcarFromForm(){
-    var make = document.getElementById("inputName");
-    var age = document.getElementById("inputAge");
-    var color = document.getElementById("inputColor");
-    var registration = document.getElementById("inputRegistration")
+    var make = document.getElementById("inputMake").value;
+    var age = document.getElementById("inputAge").value;
+    var color = document.getElementById("inputColor").value;
+    var registration = document.getElementById("inputRegistration").value
     createCar(age, make, registration, color);
     //Temporary!!
     outputList();
 
 }
+
+function deleteAndUpdateScreen () {
+
+// Get value from text box
+var registration = document.getElementById("deleteInput").value;
+//Delete  it from in -memory array
+deleteCar(registration);
+//Refresh outputted list
+outputList();
+
+function loadCar() {
+
+ var listBox = d.getElementById("Output");
+ 
+ var selectedRegistration = listBox.options[listBox.selectedIndex].value
+
+  for (var i = 0; i < carlist.length; i++){
+      
+  if (carlist[i].registration == selectedRegistration){
+  
+var output = "";
+    //Get all values of the car we care about
+    output += "Registration:" +carlist[i].Registration;
+    output += "Age: " + carlist[i].age;
+    output += "Color" + carlist[i].color;
+    output += "Make" + carlist[i].make;
+    }
+
+  }
+    
+}
+
 
 
     </script>
@@ -63,14 +97,23 @@ function createcarFromForm(){
     Age: <input type="number" id="inputAge"/><br/>
     Make: <input type="text"  id="inputMake"/><br/>
     Registration: <input type="text" id="inputRegistration"/><br/>
-    Color: <input type="text" id"inputColor"/><br/>
-    <button>Create Car</button>
+    Color: <input type="text" id="inputColor"/><br/>
+    <button onclick="createcarFromForm()"> Create Car</button>
 
     <hr/>
     
     <h1>Remove Car</h1>
     Registration: <input type="text" id="deleteInput"/>
-    <button>Remove</button>
+    <button onclick="deleteAndUpdateScreen()
+    ">Remove</button>
+    
+    
+    <hr/>
+    <h1>Car List</h1>
+    <select id="output" size="10" onchange="loaCar()"></select>
+    <p id="individualOutput"></p> 
+
+    
 
 
 </body>
