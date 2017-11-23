@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+        
+
+        var carlist = []
+
+        function createCar(age, make, registration, color){
+            var carObject = { 
+                age: age,
+                make:make,
+                registration: registration,
+                color: color           
+            }
+            carlist.push(carObject);
+        }
+
+        function outputList(){
+        //Output
+        for (var i = 0; i < carlist.length; i++) {
+            console.log(carlist[i].registration);
+        }
+        
+
+        }
+createCar(5, "Peugeot", "YK10YKM", "Red");
+createCar(10, "Lambo", "PG10PGM", "Black");
+
+       outputList();
+
+function deleteCar( registrationToDelete){
+    for (var i = 0; i < carlist.length; i++) {
+            if (carlist[i].registration == registrationToDelete) {
+                carlist.splice(i, 1);
+
+                
+            }        
+    }
+}
+
+deleteCar("YK10YKM");
+deleteCar("PG10YKM");
+                  
+
+
+
+
+    </script>
+
+<body>
+    <h1>Create car</h1>
+    Age: <input type="number" id="inputAge"/><br/>
+    Make: <input type="text"  id="inputMake"/><br/>
+    Registration: <input type="text" id="inputRegistration"/><br/>
+    Color: <input type="text" id"inputColor"/><br/>
+    <button>Create Car</button>
+
+    <hr/>
+    
+    <h1>Remove Car</h1>
+    Registration: <inputtype="text" id="deleteInput"/>
+    <button>Remove</button>
+
+
+</body>
+
+</html>
