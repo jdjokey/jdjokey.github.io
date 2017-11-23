@@ -66,10 +66,12 @@ deleteCar(registration);
 //Refresh outputted list
 outputList();
 
-function loadCar() {
+
+
+function loadCar(){
 
  var listBox = d.getElementById("Output");
- 
+
  var selectedRegistration = listBox.options[listBox.selectedIndex].value
 
   for (var i = 0; i < carlist.length; i++){
@@ -82,6 +84,8 @@ var output = "";
     output += "Age: " + carlist[i].age;
     output += "Color" + carlist[i].color;
     output += "Make" + carlist[i].make;
+    document.getElementById("IndividualOutput").innerHTML =output;
+    
     }
 
   }
