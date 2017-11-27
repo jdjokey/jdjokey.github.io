@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+   
     <button onclick="loadData()">Load Superheroes</button>
 
 </br>
@@ -16,7 +17,13 @@
     SecretBase: <p id="secretBase"></p>
     Active: <p id="active"></p>
 
+     <h1>Hero List</h1>
+    <select id="output" size="10" onchange="loadHero()" style="min-width:100px"></select>
+    <p id="individualOutput"></p>
+
 <script>
+
+    var heroList = [];
         
  function loadData(){
       var requestURL ='https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json';
@@ -38,14 +45,43 @@ document.getElementById("hometown").innerHTML = superHeroes.homeTown;
 document.getElementById("secretBase").innerHTML = superHeroes.secretBase;
 document.getElementById("active").innerHTML = superHeroes.active;
 
-
-//Formed
-//Hoetown
-//Secrtet base
-//Active
-
-
+var superHeroMembers = superHeroes.members;
+for(var i =0; i< superHeroMembers.length; i++) {
+    heroList.push(superHeroMembers[i]);
 }
+outputList()
+}
+
+function outputList() {
+        var heroOutput = "";
+        for (var i = 0; i < heroList.length; i++) {
+            heroOutput += "<option>";
+            heroOutput += heroList[i].name;
+            heroOutput += "</option>";
+        }
+        document.getElementById("output").innerHTML = heroOutput;
+    }
+
+
+    function loadHero() {
+        var listBox = document.getElementById("output");
+        var selectedName = listBox.options[listBox.selectedIndex].value
+
+        for (var i = 0; i < heroList.length; i++) {
+            if (heroList[i].name == selectedName) {
+                var output = "";
+                output += "Name: " + heroList[i].name;
+                output += " Age: " + heroList[i].age;
+                output += " Secreteidentity: " + heroList[i].secreteidentity;
+                output += " Powers: " + heroList[i].powers;
+                document.getElementById("individualOutput").innerHTML = output;
+            }
+}
+
+    }
+
+
+
 </script>
 
 </body>
