@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="loadData()">Load Superheroes</button>
+
+</br>
+
+    Name: <p id="squadname"></p>
+    Formed: <p id="formed"></p>
+    HomeTown: <p id="hometown"></p>
+    SecretBase: <p id="secretBase"></p>
+    Active: <p id="active"></p>
+
+<script>
+        
+ function loadData(){
+      var requestURL ='https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json';
+      var request =
+      new XMLHttpRequest();
+      request.open('GET',
+      requestURL);
+      request.responseType = 'json'
+      request.send();
+      request.onload = function () {
+          var superHeroes = request.response;
+          loadPageWithData(superHeroes);
+      }
+ }
+function loadPageWithData(superHeroes){
+document.getElementById("squadname").innerHTML = superHeroes.squadName;
+document.getElementById("formed").innerHTML = superHeroes.formed;
+document.getElementById("hometown").innerHTML = superHeroes.homeTown;
+document.getElementById("secretBase").innerHTML = superHeroes.secretBase;
+document.getElementById("active").innerHTML = superHeroes.active;
+
+
+//Formed
+//Hoetown
+//Secrtet base
+//Active
+
+
+}
+</script>
+
+</body>
+
+</html>
