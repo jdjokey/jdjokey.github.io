@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+    function addNumbers() {
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+        var result = parseInt(input1) + parseInt(input2);
+        document.getElementById("output1").innerHTML = result;
+    }
+    function subtractNumbers() {
+        var input3 = document.getElementById("input3").value;
+        var input4 = document.getElementById("input4").value;
+        var result = parseInt(input3) - parseInt(input4);
+        document.getElementById("output2").innerHTML = result;
+    }
+    function divideNumbers() {
+        var input5 = document.getElementById("input5").value;
+        var input6 = document.getElementById("input6").value;
+        var result = parseInt(input5) / parseInt(input6);
+        document.getElementById("output3").innerHTML = result;
+    }
+    function divideNumbers() {
+        var input7 = document.getElementById("input7").value;
+        var input8 = document.getElementById("input8").value;
+        var result = parseInt(input7) * parseInt(input8);
+        document.getElementById("output4").innerHTML = result;
+    }
+
+</script>
+
+
+<body>
+    <input type="text" id="input1" />
+    <input type="text" id="input2" />
+    <button onclick="addNumbers()">Add Numbers</button>    
+    <p id="output1"></p>
+
+    <input type="text" id="input3" />
+    <input type="text" id="input4" />
+    <button onclick="subtractNumbers()">Subtract Numbers</button>    
+    <p id="output2"></p>
+
+    <input type="text" id="input5" />
+    <input type="text" id="input6" />
+    <button onclick="divideNumbers()">Divide Numbers</button>
+    <p id="output3"></p>
+
+    <input type="text" id="input7" />
+    <input type="text" id="input8" />
+    <button onclick="multiplyNumbers()">Divide Numbers</button>
+    <p id="output4"></p>
+
+
+</body>
+
+</html>

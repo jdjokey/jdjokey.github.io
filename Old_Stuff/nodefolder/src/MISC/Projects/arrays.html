@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+
+    var nameList = [];
+
+    function addName() {
+        var name = document.getElementById("nameInput").value;
+        nameList.push(name);
+        alterList();
+    }
+
+    function alterList() {
+        var totalList = "";
+        for (var i = 0; i < nameList.length; i++) {
+            totalList += "<li>" + nameList[i] + "</li>";
+        }
+        document.getElementById("listOfNames").innerHTML = totalList;
+    }
+
+    function deleteName() {
+        var nameToDelete = document.getElementById("deleteNameInput").value;
+        for (var i = 0; i < nameList.length; i++) {
+            if (nameList[i] == nameToDelete) {
+                //First parameter is the index to move at
+                //Second parameter is how many from that point
+                nameList.splice(i, 1);
+            }
+        }
+        alterList();
+
+var sentence = ["Luke", "I", "am", "your", "father"];
+
+console.log(sentence.toString());
+
+function displayArray(array) {
+            var output = "";
+            //additional code to go here
+            return output;
+}
+for (var i = 0; i < array.length; i++) {
+   output += sentence[i] + " ";
+}
+function test() {
+            flag = true;
+            console.log(flag);
+            test1();
+            console.log(flag);
+        }
+        function test1() {
+            flag = false;
+            return
+        }
+        test();
+
+
+
+
+    }
+
+
+</script>
+
+<body>
+    Name:
+    <input type="text" id="nameInput" /> Name To Delete:
+    <input type="text" id="deleteNameInput" />
+
+    <button onclick="addName()"> Click Me to add Name</button>
+    <button onclick="deleteName()"> Click Me to Delete a Name</button>
+
+    <ul id="listOfNames">
+
+    </ul>
+</body>
+
+</html>
