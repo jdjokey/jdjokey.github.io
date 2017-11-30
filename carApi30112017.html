@@ -6,32 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Garage</title>
 
-<!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-<!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts -->
+    <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" -->
+    <!-- type="text/css"> -->
 
-<!-- Custom CSS -->
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <!-- <link href="css/stylish-portfolio.css" rel="stylesheet"> -->
 
 
 </head>
 <script>
-
     var carList = []
 
     function createCar(age, make, registration, color) {
         var carObject = {
+           
             age: age,
             make: make,
             registration: registration,
             color: color
         }
-        carList.push(carObject);
-    }
 
+        var request = new Request("http://localhost:3000/car", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(carObject)
+        });
+
+        fetch(request).then((response) => {
+            response.json().then(body => {
+                carList.push(body);
+                outputList();
+            });
+        });
+    }
 
     function outputList() {
         var carOutput = "";
@@ -46,12 +60,22 @@
 
 
     function deleteCar(registrationToDelete) {
+       var carToDelete = carList.find((car) => car.registration == registrationToDelete);
+       if (carToDelete) {
+           var request = new Request("http://localhost:3000/car/" + carToDelete._id, {
+               method: "Delete"
+           });
+       fetch(request).then(outputList);
+       
+        }
+       
         for (var i = 0; i < carList.length; i++) {
             if (carList[i].registration == registrationToDelete) {
                 carList.splice(i, 1);
             }
         }
     }
+
     function createCarFromForm() {
         var make = document.getElementById("inputMake").value;
         var age = document.getElementById("inputAge").value;
@@ -114,7 +138,7 @@
         }
     }
 
-     function search() {
+    function search() {
         var carListToSearch = document.getElementById("carlistInput").value
         var totalListOutput = "";
         for (var i = 0; i < carList.length; i++) {
@@ -127,48 +151,62 @@
         document.getElementById("output").innerHTML = totalListOutput;
     }
 
+    function getCarsFromDatabase() {
+        fetch("http://localhost:3000/car").then((response) => {
+            response.json().then((body) => {
+                carList = body;
+                outputList();
+            });
+        });
+
+    }
+
+    getCarsFromDatabase();
+
 </script>
 
 <body>
     <center>
-    <h1>Create Car</h1>
-    <br/> Age:
-    <input type="number" id="inputAge" onkeydown="createCarOnEnter(event)" />
-    <br/> Make:
-    <input type="text" id="inputMake" onkeydown="createCarOnEnter(event)" />
-    <br/> Registration:
-    <input type="text" id="inputRegistration" onkeyup="upperCaseF(this)" onkeydown="createCarOnEnter(event)" />
-    <br/> Color:
-    <input type="text" id="inputColor" onkeydown="createCarOnEnter(event)" />
-    <br/>
-    <button onclick="createCarFromForm()">Create Car</button>
+        <h1>Create Car</h1>
+        <br/> Age:
+        <input type="number" id="inputAge" onkeydown="createCarOnEnter(event)" />
+        <br/> Make:
+        <input type="text" id="inputMake" onkeydown="createCarOnEnter(event)" />
+        <br/> Registration:
+        <input type="text" id="inputRegistration" onkeyup="upperCaseF(this)" onkeydown="createCarOnEnter(event)" />
+        <br/> Color:
+        <input type="text" id="inputColor" onkeydown="createCarOnEnter(event)" />
+        <br/>
+        <button onclick="createCarFromForm()">Create Car</button>
 
-    <hr/>
+        <hr/>
 
-    <h1>Remove Car</h1>
-    Registration:
-    <input type="text" id="deleteInput" style="text-transform:uppercase" onkeyup="upperCaseF(this)" onkeydown="deleteCarOnEnter(event)"
-    />
-    <button onclick="deleteAndUpdateScreen()">Remove</button>
+        <h1>Remove Car</h1>
+        Registration:
+        <input type="text" id="deleteInput" style="text-transform:uppercase" onkeyup="upperCaseF(this)" onkeydown="deleteCarOnEnter(event)"
+        />
+        <button onclick="deleteAndUpdateScreen()">Remove</button>
 
-    <hr/>
+        <hr/>
 
-    <h1>Car List</h1>
-    <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
-    <p id="individualOutput"></p>
+        <h1>Car List</h1>
+        <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
+        <p id="individualOutput"></p>
 
 
-    <hr/>
-    <h1>Search Car</h>
-        <br>
+        <hr/>
+        <h1>Search Car</h>
+            <br>
 
-       <input type="text" id="carlistInput" onkeyup="search()" />
-    <button onclick="search()">Search</button>
-    
+            <input type="text" id="carlistInput" onkeyup="search()" />
+            <button onclick="search()">Search</button>
+
 
 
 
     </center>
+
+    <a href="https://jdjokey.github.io/">Back to  Home Page</a>
 </body>
 
 </html>

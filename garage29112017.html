@@ -114,19 +114,6 @@
         }
     }
 
-     function search() {
-        var carListToSearch = document.getElementById("carlistInput").value
-        var totalListOutput = "";
-        for (var i = 0; i < carList.length; i++) {
-            if (carList[i].registration.toLowerCase().includes(carListToSearch.toLowerCase())) {
-                totalListOutput += "<option>";
-                totalListOutput += carList[i].registration;
-                totalListOutput += "</option>";
-            }
-        }
-        document.getElementById("output").innerHTML = totalListOutput;
-    }
-
 </script>
 
 <body>
@@ -156,17 +143,6 @@
     <h1>Car List</h1>
     <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
     <p id="individualOutput"></p>
-
-
-    <hr/>
-    <h1>Search Car</h>
-        <br>
-
-       <input type="text" id="carlistInput" onkeyup="search()" />
-    <button onclick="search()">Search</button>
-    
-
-
 
     </center>
 </body>
